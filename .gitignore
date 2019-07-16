@@ -5,3 +5,4 @@ dist/
 drf_firebase_auth_cavoke.egg-info/
 .vscode/
 README.hidden.md
+build/

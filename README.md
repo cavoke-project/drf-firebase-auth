@@ -1,4 +1,4 @@
-# DRF Firebase Auth
+# DRF Firebase Auth (Forked from [drf-firebase-auth by garyburgman](https://github.com/garyburgmann/drf-firebase-auth))
 
 ## Requirements
 

@@ -11,7 +11,7 @@ import datetime
 from django.conf import settings
 from rest_framework.settings import APISettings
 
-USER_SETTINGS = getattr(settings, 'drf_firebase_auth_cavoke', None)
+USER_SETTINGS = getattr(settings, 'DRF_FIREBASE_AUTH_CAVOKE', None)
 
 DEFAULTS = {
     # allow anonymous requests without Authorization header set
