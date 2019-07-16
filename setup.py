@@ -22,7 +22,8 @@ name = 'drf-firebase-auth-cavoke'
 version = get_version('drf_firebase_auth_cavoke')
 package = 'drf_firebase_auth_cavoke'
 description = 'Custom Django Rest Framework authentication backend for ' \
-              'parsing Firebase uid tokens and storing as local users. Forked from drf-firebase-auth by garyburgmann: https://github.com/garyburgmann/drf-firebase-auth'
+              'parsing Firebase uid tokens and storing as local users. Forked from drf-firebase-auth ' \
+              'by garyburgmann: https://github.com/garyburgmann/drf-firebase-auth provided under MIT'
 url = 'https://github.com/cavoke-project/drf-firebase-auth-cavoke'
 author = 'Alex Kovrigin'
 author_email = 'a.kovrigin0@gmail.com'

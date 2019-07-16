@@ -5,7 +5,7 @@ Authorization header, verifying, and locally authenticating
 Author: Gary Burgmann
 Email: garyburgmann@gmail.com
 Location: Springfield QLD, Australia
-Last update: 2019-02-10
+Last update: 2019-07-16 by Alex Kovrigin
 """
 import json
 import uuid
@@ -29,10 +29,13 @@ from drf_firebase_auth_cavoke.models import (
 
 User = get_user_model()
 
-firebase_credentials = firebase_admin.credentials.Certificate(
-    api_settings.FIREBASE_SERVICE_ACCOUNT_KEY
-)
-firebase = firebase_admin.initialize_app(firebase_credentials)
+try:
+    firebase_credentials = firebase_admin.credentials.Certificate(
+        api_settings.FIREBASE_SERVICE_ACCOUNT_KEY
+    )
+    firebase = firebase_admin.initialize_app(firebase_credentials)
+except ValueError:
+    pass
 
 
 class BaseFirebaseAuthentication(authentication.BaseAuthentication):
@@ -41,7 +44,7 @@ class BaseFirebaseAuthentication(authentication.BaseAuthentication):
     """
     def authenticate(self, request):
         """
-        With ALLOW_ANONYMOUS_REQUESTS, set request.user to an AnonymousUser, 
+        With ALLOW_ANONYMOUS_REQUESTS, set request.user to an AnonymousUser,
         allowing us to configure access at the permissions level.
         """
         authorization_header = authentication.get_authorization_header(request)
@@ -106,7 +109,7 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
             raise exceptions.AuthenticationFailed(
                 'Invalid Authorization header prefix, expecting: JWT.'
             )
-        
+
         return authorization_header[1]
 
     def decode_token(self, firebase_token):
@@ -217,7 +220,7 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
         if local_firebase_user.uid != firebase_user.uid:
             local_firebase_user.uid = firebase_user.uid
             local_firebase_user.save()
-        
+
         # store FirebaseUserProvider data
         for provider in firebase_user.provider_data:
             local_provider = FirebaseUserProvider.objects.filter(
