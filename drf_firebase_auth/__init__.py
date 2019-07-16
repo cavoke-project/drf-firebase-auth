@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__title__ = 'drf-firebase-auth'
+__title__ = 'drf-firebase-auth-cavoke'
 __version__ = '0.0.4'
 __author__ = 'Gary Burgmann'
 __license__ = 'MIT'

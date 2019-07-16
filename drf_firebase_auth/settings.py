@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Settings config for the drf_firebase_auth application
+Settings config for the drf_firebase_auth_cavoke application
 Author: Gary Burgmann
 Email: garyburgmann@gmail.com
 Location: Springfield QLD, Australia
@@ -11,7 +11,7 @@ import datetime
 from django.conf import settings
 from rest_framework.settings import APISettings
 
-USER_SETTINGS = getattr(settings, 'DRF_FIREBASE_AUTH', None)
+USER_SETTINGS = getattr(settings, 'drf_firebase_auth_cavoke', None)
 
 DEFAULTS = {
     # allow anonymous requests without Authorization header set

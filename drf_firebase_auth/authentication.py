@@ -21,8 +21,8 @@ from rest_framework import (
     exceptions
 )
 
-from drf_firebase_auth.settings import api_settings
-from drf_firebase_auth.models import (
+from drf_firebase_auth_cavoke.settings import api_settings
+from drf_firebase_auth_cavoke.models import (
     FirebaseUser,
     FirebaseUserProvider
 )

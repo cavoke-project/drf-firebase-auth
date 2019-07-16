@@ -12,7 +12,7 @@
 ## Installation
 
 ```
-$ pip install drf-firebase-auth
+$ pip install drf-firebase-auth-cavoke
 ```
 
 Add the application to your project's `INSTALLED_APPS` in `settings.py`.
@@ -20,7 +20,7 @@ Add the application to your project's `INSTALLED_APPS` in `settings.py`.
 ```
 INSTALLED_APPS = [
     ...
-    'drf_firebase_auth',
+    'drf_firebase_auth_cavoke',
 ]
 ```
 
@@ -33,17 +33,17 @@ REST_FRAMEWORK = {
   'DEFAULT_AUTHENTICATION_CLASSES': [
     ...
     'rest_framework.authentication.SessionAuthentication',
-    'drf_firebase_auth.authentication.FirebaseAuthentication',
+    'drf_firebase_auth_cavoke.authentication.FirebaseAuthentication',
   ]
 }
 ```
 
 
-The `drf_firebase_auth` application comes with the following settings as default, which can be overridden in your project's `settings.py` file. Make sure to nest them within `DRF_FIREBASE_AUTH` as below:
+The `drf_firebase_auth_cavoke` application comes with the following settings as default, which can be overridden in your project's `settings.py` file. Make sure to nest them within `drf_firebase_auth_cavoke` as below:
 
 
 ```
-DRF_FIREBASE_AUTH = {
+drf_firebase_auth_cavoke = {
     # path to JSON file with firebase secrets
     'FIREBASE_SERVICE_ACCOUNT_KEY': '',
     # allow creation of new local user in db
@@ -64,7 +64,7 @@ You can get away with leaving all the settings as default except for `FIREBASE_S
 
 ```
 ...
-DRF_FIREBASE_AUTH = {
+drf_firebase_auth_cavoke = {
     'FIREBASE_SERVICE_ACCOUNT_KEY': 'project/config/firebase.json'
 }
 ```
@@ -72,7 +72,7 @@ DRF_FIREBASE_AUTH = {
 Now that you have configured the application, run the migrations so that the Firebase data can be stored.
 
 ```
-$ ./manage.py migrate drf_firebase_auth
+$ ./manage.py migrate drf_firebase_auth_cavoke
 ```
 
 All you need to do now is have your client code handle the Firebase popup/redirect authentication flow, retrieve the idToken from the currentUser (Firebase explains this flow well in their docs: `https://firebase.google.com/docs/auth/admin/verify-id-tokens`), and then use the idToken for the user in an `Authorization` header in requests to your API.

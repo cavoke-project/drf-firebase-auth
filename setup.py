@@ -18,14 +18,14 @@ def get_version(package):
         return re.search("__version__ = ['\"]([^'\"]+)['\"]", src).group(1)
 
 
-name = 'drf-firebase-auth'
-version = get_version('drf_firebase_auth')
-package = 'drf_firebase_auth'
+name = 'drf-firebase-auth-cavoke'
+version = get_version('drf_firebase_auth_cavoke')
+package = 'drf_firebase_auth_cavoke'
 description = 'Custom Django Rest Framework authentication backend for ' \
-              'parsing Firebase uid tokens and storing as local users.'
-url = 'https://github.com/garyburgmann/drf-firebase-auth'
-author = 'Gary Burgmann'
-author_email = 'garyburgmann@gmail.com'
+              'parsing Firebase uid tokens and storing as local users. Forked from drf-firebase-auth by garyburgmann: https://github.com/garyburgmann/drf-firebase-auth'
+url = 'https://github.com/cavoke-project/drf-firebase-auth-cavoke'
+author = 'Alex Kovrigin'
+author_email = 'a.kovrigin0@gmail.com'
 license = 'MIT'
 install_requires = [
     'firebase-admin>=2.0.0',
@@ -73,7 +73,7 @@ if sys.argv[-1] == 'publish':
     os.system('twine upload dist/*')
     shutil.rmtree('dist')
     shutil.rmtree('build')
-    shutil.rmtree('drf_firebase_auth.egg-info')
+    shutil.rmtree('drf_firebase_auth_cavoke.egg-info')
     print('You probably want to also tag the version now:')
     print("  git tag -a {0} -m 'version {0}'".format(version))
     print('  git push --tags')
