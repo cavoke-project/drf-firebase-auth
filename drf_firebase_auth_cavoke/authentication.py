@@ -5,7 +5,7 @@ Authorization header, verifying, and locally authenticating
 Author: Gary Burgmann
 Email: garyburgmann@gmail.com
 Location: Springfield QLD, Australia
-Last update: 2019-07-16 by Alex Kovrigin
+Last update: 2019-07-18 by Alex Kovrigin
 """
 import json
 import uuid
@@ -165,8 +165,12 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
         """
         Attempts to return or create a local User from Firebase user data
         """
-        email = firebase_user.email if firebase_user.email \
-            else firebase_user.provider_data[0].email
+        if firebase_user.email:
+            email = firebase_user.email
+        elif firebase_user.provider_data:
+            email = firebase_user.provider_data[0].email
+        else:
+            email = 'cavoke-' + firebase_user.uid + '@alexkovrigin.me'
         try:
             user = User.objects.get(email=email)
             if not user.is_active:
@@ -212,7 +216,8 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
         if not local_firebase_user:
             new_firebase_user = FirebaseUser(
                 uid=firebase_user.uid,
-                user=user
+                user=user,
+                isAnonymous=not bool(firebase_user.provider_data)
             )
             new_firebase_user.save()
             local_firebase_user = new_firebase_user

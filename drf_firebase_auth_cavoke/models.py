@@ -5,7 +5,7 @@ to the local AUTH_USER_MODEL model.
 Author: Gary Burgmann
 Email: garyburgmann@gmail.com
 Location: Springfield QLD, Australia
-Last update: 2019-02-10
+Last update: 2019-07-18 by Alex Kovrigin
 """
 from django.db import models
 from django.conf import settings
@@ -20,6 +20,7 @@ class FirebaseUser(models.Model):
         related_query_name='firebase_user',
     )
     uid = models.CharField(max_length=191, null=False,)
+    isAnonymous = models.BooleanField(default=False)
 
 
 class FirebaseUserProvider(models.Model):
