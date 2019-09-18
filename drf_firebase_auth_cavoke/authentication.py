@@ -146,7 +146,7 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
             uid = decoded_token.get('uid')
             firebase_user = firebase_auth.get_user(uid)
             if api_settings.FIREBASE_AUTH_EMAIL_VERIFICATION:
-                if not firebase_user.email_verified:
+                if not (firebase_user.email_verified or firebase_user.provider_data[0].providerId == "github.com"):
                     raise exceptions.AuthenticationFailed(
                         'Email address of this user has not been verified.'
                     )
